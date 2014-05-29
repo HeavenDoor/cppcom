@@ -1,0 +1,36 @@
+// CppCom.idl : IDL source for CppCom
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (CppCom.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(3BCB014D-E7BE-49BD-B70A-8B1E53FABFA7),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IComInterface : IDispatch{
+	[id(0),helpstring("method Test")] HRESULT Test(void);
+	[id(1),helpstring("method getdataEx")] HRESULT getdataEx([in] LONG k, [out, retval] LONG *pVal);
+};
+[
+	uuid(3E2C2C4B-78F7-433F-A4CD-862289978A36),
+	version(1.0),
+]
+library CppComLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(5625EAF0-51EE-4351-8DB6-1A049A90BFB3)		
+	]
+	coclass ComInterface
+	{
+		[default] interface IComInterface;
+	};
+};
+
